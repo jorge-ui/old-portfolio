@@ -1,0 +1,170 @@
+.Contact {
+   position: relative;
+   background: linear-gradient(to bottom, hsl(217, 89%, 60%) 10%,hsl(217, 90%, 82%) 100%);
+   height: fit-content;
+   & h1 {
+      padding-bottom: 0;
+   }
+   & h2 {
+      color: rgb(0, 41, 108);
+      text-align: center;
+      font-weight: normal;
+      margin: 20px auto;
+      transform: translateX(-30px);
+      opacity: 0;
+      &[revealed] {
+         transform: translate(0);
+         opacity: 1;
+         transition:
+            opacity 800ms,
+            transform 800ms;
+      }
+   }
+   & .Compose {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap-reverse;
+      width: 100%;
+      height: 400px;
+      & > * {
+         // animation start
+         transform: scale(0);
+         opacity: 0;
+         &[revealed]  {
+            transform: scale(1);
+            opacity: 1;
+            transition: 
+               transform .5s cubic-bezier(.17,.67,.41,1.22),
+               opacity 450ms 50ms;
+            &[type=submit]  {
+               transition: 
+                  background-color 400ms ease,
+                  transform .5s cubic-bezier(.17,.67,.41,1.22),
+                  opacity 450ms 50ms,
+                  color 400ms;
+            }
+         }
+      }
+      & > section {
+         position: relative;
+         & [name] {
+            width: 100%;
+            padding: 12px;
+            margin: 5px 0;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+            background-color: hsl(217, 89%, 20%);
+         }
+         & [valid=false] {
+            box-shadow: 0 0 5px red;
+         }
+         & span {
+            color: red;
+            position: absolute;
+            top: 3px;
+            right: 3px;
+         }
+      }
+      & button {
+         display: flex;
+         justify-content: center;
+         text-decoration: none;
+         outline: none;
+         width: 25%;
+         background-color: hsl(217, 89%, 20%);
+         border: 0;
+         padding: 8px;
+         border-radius: 4px;
+         color: rgb(224, 224, 224);
+         transition: 
+            background-color 400ms ease,
+            color 400ms;
+         &:hover {
+            background-color: hsl(123, 94%, 76%);
+            color: #000;
+            & svg {
+               transition: transform 300ms ease-out;
+               transform: rotate(360deg);
+            }
+         }
+      }
+   }
+   & .col {
+      position: relative;
+      margin: 0 auto;
+      float: unset !important;
+      transition:
+         opacity 400ms,
+         transform 400ms cubic-bezier(.9,-0.32,.83,.67);
+   }
+   & .success {
+      margin: 0 auto;
+      width: 100%;
+      height: 200px;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transition: transform 700ms cubic-bezier(.17,.67,.14,1);
+      transform: scale(0);
+      display: none;
+      position: relative;
+      & i {
+         position: relative;
+         height: 50%;
+         width: auto;
+         & svg {
+            width: auto;
+            height: 100%;
+         }
+         & > div {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            margin: auto;
+            transform: scale(0.97);
+            overflow: hidden;
+            display: flex;
+            flex-direction: row-reverse;
+            & > div {
+               width: 100%;
+               height: 100%;
+               background-color: #00e500;
+            }
+         }
+      }
+      & p {
+         color: white;
+         text-align: center;
+         opacity: 1;
+         width: 100%;
+         font-size: 1.2rem;
+      }
+   }
+}
+.scaleToZero {
+   transform: scale(0) !important;
+}
+.scaleToOne {
+   transform: scale(1) !important;
+}
+.displayToFlex {
+   display: flex !important;
+}
+.displayToNone {
+   display: none !important;
+}
+
+
+@media only screen and (min-width: 400px) {
+   .Contact {
+      & .success {
+         & p {
+            max-width: 392px;
+         }
+      }
+   }
+}

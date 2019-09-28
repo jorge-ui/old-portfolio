@@ -1,0 +1,255 @@
+$navHeight: 60px;
+
+.About {
+   background: linear-gradient(to bottom, rgba(3,24,58,1) 0%,rgba(11,79,188,1) 100%);
+   // border-bottom: 1px solid #EDC453;
+   // box-shadow: 0 0 3px whitesmoke;
+   height: fit-content;
+   margin-top: $navHeight;
+   & main > div:first-of-type {margin-bottom: 60px;} // margin-bottom separation
+   & .nugget {
+      & .bubble {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         width: 130px;
+         margin: 0 auto;
+         height: 130px;
+         border: 1.5px solid #fff;
+         border-radius: 100%;
+         box-shadow: inset 0 0 8px white;
+         // animatino start
+         transform: rotateY(-360deg);
+         opacity: 0;
+         & i {
+            display: block;
+            margin: 0 auto;
+            width: auto;
+            height: 50%;
+            & > svg {
+               width: 100%;
+               height: 100%;
+               overflow: visible;
+            }
+            & .responsive {
+               transform: scale(.94);
+               & .desktop path {
+                  transform: translate(-50px, -50px);
+                  clip-path: polygon(0 100%, 0 0, 100% 0, 100% 19%, 58% 19%, 58% 100%);
+               }
+               & .mobile path {
+                  transform: translate(150px, 50px);
+               }
+            }
+            & .speed path {
+               transform: translate(0px, -10px);
+            }
+            & .rocket path {
+               transform: translate(-20px, 20px);
+            }
+         }
+         & svg {
+            color: #EDC453;
+            filter: drop-shadow(0 0 1px #EDC453);
+         }
+      }
+      & h2 {
+         text-align: center;
+         font-weight: 500;
+         // animation start
+         transform: scale(0);
+      }
+      & p  {
+         text-align: center;
+         // animation start
+         transform: scale(0);
+      }
+      // nugget revealed
+      &[revealed] {
+         & .bubble {
+            transform: rotateY(0deg);
+            opacity: 1;
+            transition:
+               transform 1s cubic-bezier(0.42, 0.86, 0.49, 1.38),
+               opacity .9s .1s;
+         }
+         & h2 {
+            transform: scale(1);
+            transition: transform 400ms cubic-bezier(.11,.98,.48,1.64) 200ms;
+         }
+         & p  {
+            transform: scale(1);
+            transition: transform 400ms cubic-bezier(.11,.98,.6,1.29) 500ms;
+         }
+      }
+   }
+   & .me {
+      // animation start
+      transform: translateX(-30px);
+      opacity: 0;
+      & .img {
+         position: relative;
+         display: block;
+         height: auto;
+         width: 50%;
+         margin: 0 auto;
+         // animation properties
+         animation-name: move;
+         animation-duration: 2s;
+         animation-timing-function: ease-in-out;
+         animation-iteration-count: infinite;
+         animation-direction: alternate;
+         animation-fill-mode: both;
+         & img {
+            border-radius: 100%;
+            height: auto;
+            width: 100%;
+            cursor: crosshair;
+            box-sizing: border-box;
+         }
+         & .shadow {
+            position: absolute;
+            top: -5%;
+            left: -5%;
+            width: 110%;
+            height: 110%;
+            border-radius: 100%;
+            background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,.9) 40%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            transition: opacity 400ms;
+         }
+      }
+      & p:first-of-type {
+         text-align: center;
+         font-size: 1rem;
+         transform: translateX(-30px);
+         opacity: 0;
+      }
+      & p:last-child {
+         text-align: center;
+         font-size: 1rem;
+         transform: translateX(-30px);
+         opacity: 0;
+      }
+      // .me revealed
+      &[revealed] {
+         transform: translateX(0);
+         opacity: 1;
+         transition: all 400ms;
+         & p:first-of-type {
+            transform: translateX(0);
+            opacity: 1;
+            transition: all 400ms 200ms;
+         }
+         & p:last-child {
+            transform: translateX(0);
+            opacity: 1;
+            transition: all 400ms 400ms;
+         }
+      }
+   }
+   & .Skills {
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      & .skillDiv {
+         height: 35px;
+         // animation start
+         transform: rotateX(90deg) skewX(30deg);
+         & label {
+            display: block;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            padding: 8px 0;
+            width: 117px;
+         }
+         & data {
+            display: block;
+            border-radius: 2rem;
+            width: 100%;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.415);
+            & > span {
+               display: block;
+               height: 100%;
+               & > span {
+                  display: block;
+                  width: 0%;
+                  height: 100%;
+                  border-radius: 2rem;
+                  box-shadow: 0 0 5px #EDC453;
+                  background-color: #EDC453;
+               }
+            }
+         }
+         // each .skillDiv revealed
+         &[revealed]  {
+            transform: rotateX(0deg) skewX(0deg);
+            transition: transform 500ms cubic-bezier(.19,.53,.62,2.37);
+            & data > span > span {
+               width: 100%;
+               transition: width 2s 500ms;
+            }
+         }
+      }
+   }
+}
+
+@keyframes move {
+   from {
+      transform: rotate(-4deg);
+   }
+   to {
+      transform: rotate(2deg);
+   }
+}
+
+@media only screen and (min-width: 768px) {
+   .skillDiv {
+      margin-right: 50px;
+   }
+   .description {
+      padding: 0 15px;
+   }
+}
+
+@media only screen and (max-width: 767px) {
+      .bubble {
+         width: 110px !important;
+         height: 110px !important;
+      }
+      .bubble ~ p {
+         font-size: 1em;
+         height: 90px;
+      }
+
+}
+@media only screen and (max-width: 576px) {
+   .About {
+      & main > div {margin-bottom: 20px;} 
+      & h1 {
+         padding-bottom: 40px;
+      }
+      & .bubble {
+         width: 90px !important;
+         height: 90px !important;
+      }
+   }
+}
+
+@media only screen and (min-width: 1200px) {
+   .bubble ~ p {
+      padding: 0 25px;
+   }
+}
+
+@media only screen and (min-width: 420px) {
+   .About [id=nuggetsRow] {
+      & p {
+         max-width: 172px;
+         margin: 0 auto;
+         box-sizing: content-box;
+      }
+   }
+}

@@ -1,0 +1,59 @@
+.Landing {
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 10;
+}
+.Box {
+   font-family: 'Sunflower';
+   font-size: 2.7rem;
+   color: white;
+   font-weight: 300 !important;
+   z-index: 10;
+   & span {
+      color: rgb(255, 207, 75);
+   }
+   & * {
+      margin: 0 auto;
+      text-align: center;
+   }
+   & button {
+      display: block;
+      margin-top: 15px;
+      font-size: 1.5rem;
+      border: 1.5px solid white;
+      padding: 5px 20px;
+      background-color: rgba(255, 255, 255, 0);
+      transition: all 400ms;
+      outline: none;
+      & svg {
+         margin-left: 10px;
+         transition: transform 400ms;
+      }
+      &:hover {
+         & svg {
+            transform: rotate(90deg);            
+         }
+         background-color: rgb(255, 207, 75);
+         border-color: rgb(255, 207, 75);
+         color: #000;
+      }
+   }
+}
+
+@media only screen and (max-width: 700px) {
+   .Box {
+      font-size: 2.3rem;
+   }
+}
+@media only screen and (max-width: 530px) {
+   .Box {
+      font-size: 1.7rem;
+   }
+}
+@media only screen and (max-width: 400px) {
+   .Box {
+      font-size: 1.4rem;
+   }
+}

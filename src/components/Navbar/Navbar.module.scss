@@ -1,0 +1,54 @@
+$navHeight: 60px;
+
+.Navbar {
+   position: absolute;
+   border-bottom: 1px solid #EDC453;
+   box-shadow: 0 0 3px whitesmoke;
+   background-color: rgba(35, 43, 58, .4 );
+   color: white;
+   text-align: center;
+   width: 100%;
+   height: $navHeight;
+   overflow: hidden;
+   z-index: 100;
+   & ul {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      margin: 0 40px;
+      text-transform: uppercase;
+      & li {
+         list-style: none;
+         padding: 3px;
+         margin: 0 20px;
+         user-select: none;
+         transition: 
+            color 1s,
+            text-shadow 400ms;
+         cursor: pointer;
+         &:hover {
+            text-shadow: 0 0 2px whitesmoke;
+         }
+      }
+   }
+}
+
+@media only screen and (max-width: 575px) {
+   .Navbar {
+      & ul {
+         justify-content: space-around;
+         margin: 0;
+         padding: 0;
+         font-size: 0.8em;
+         & li {
+            margin: 0 10px;
+         }
+      }
+   }
+}
+
+@keyframes popDown {
+   to {
+      transform: translate(0px, $navHeight)
+   }
+}

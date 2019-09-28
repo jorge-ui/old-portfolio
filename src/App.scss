@@ -1,0 +1,67 @@
+$navHeight: 60px;
+
+html {
+   font-size: 16px;
+}
+body {
+   background-color: #03183A;
+}
+
+.App {
+   overflow: hidden;
+   position: relative;
+   color: #fff;
+}
+.navbar-fixed {
+   position: fixed !important;
+   top: -$navHeight !important;
+   animation-name: showNav;
+   animation-duration: 400ms;
+   animation-fill-mode: forwards;
+}
+.canvas-fixed {
+   position: fixed !important;
+   top: -100vh !important;
+   // z-index: 0 !important;
+   margin-top: -$navHeight;
+   animation-name: showCanvas;
+   animation-duration: 400ms;
+   animation-fill-mode: forwards;
+}
+
+.li-active {
+   color: rgb(255, 207, 75);
+   text-shadow: 0 0 6px white !important;
+}
+
+h1 {
+   margin: 0;
+   padding: 80px 0;
+   text-align: center;
+   color: whitesmoke;
+   text-transform: uppercase;
+   font-weight: 400;
+   // animation start
+   transform: translateX(-30px);
+   opacity: 0;
+   &[revealed] {
+      transform: translate(0);
+      opacity: 1;
+      transition:
+         opacity 800ms,
+         transform 800ms;
+   }
+}
+
+
+@keyframes showNav {
+   to {
+      transform: translateY($navHeight)
+   }
+}
+@keyframes showCanvas {
+   to {
+      margin-top: 0
+   }
+}
+

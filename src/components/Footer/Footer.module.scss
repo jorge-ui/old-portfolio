@@ -1,0 +1,75 @@
+.Footer {
+   height: 119px;
+   width: 100%;
+   background-color: #03183A;
+   display: flex;
+   align-items: center;
+   & ul {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: fit-content;
+      margin: auto;
+      list-style: none;
+      padding: 0;
+      & li {
+         display: block;
+         margin: 0 15px;
+         & a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 55px;
+            height: 55px;
+            border-radius: 10px;
+            background-color: hsla(217, 89%, 82%, 0.564);
+            transition:
+               background-color 400ms,
+               transform 400ms;
+            & svg {
+               color: #fff;
+            }
+            &:hover  {
+               transform: scale(.95);
+               transition:
+                  background-color 400ms,
+                  transform 400ms cubic-bezier(.05,.76,.35,2.41);
+               }
+            }
+         }
+      }
+      // facebook color
+      & li:nth-of-type(1) a:hover  {
+         background-color: #4267B2;
+      }
+      // github color
+      & li:nth-of-type(2) a:hover  {
+         background-color: #24292E;
+      }
+
+      & li:nth-of-type(3) a:hover  {
+         background-color: #0077B5;
+      }
+      & li:nth-of-type(4) a:hover  {
+         background-color: #FF4500;
+      }
+}
+
+@media only screen and (max-width: 575px) {
+   .Footer {
+      height: 90px;
+      & ul {
+         & li {
+            margin: 0 10px;
+            & a {
+               width: 45px;
+               height: 45px;
+               & svg {
+                  height: 70%;
+                  width: 70%;
+               }
+            }
+         }
+      }
+   }
+}
